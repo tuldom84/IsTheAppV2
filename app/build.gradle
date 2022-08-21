@@ -1,0 +1,205 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+//apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 31
+    defaultConfig {
+        applicationId "com.dtz.netservice"
+        minSdkVersion 21
+        targetSdkVersion 31
+        versionCode 1
+        versionName "2.0.0"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.debug
+        proguardFiles getDefaultProguardFile('proguard-android.txt')
+
+        sourceSets {
+            main.java.srcDirs += 'src/main/kotlin'
+            main.java.srcDirs += 'src/'
+
+            main.java.srcDirs += 'kotlin/com/dtz/netservice/app'
+           // main.java.srcDirs += 'com.daimajia.androidanimations.library'
+        }
+    }
+    buildTypes {
+        packagingOptions {
+            exclude 'META-INF/com.android.tools/proguard/coroutines.pro'
+        }
+        //   proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+         kaptGenerateStubsDebugKotlin
+        release {
+            minifyEnabled false
+        }
+        debug {
+            signingConfig signingConfigs.debug
+            matchingFallbacks = ['debug']
+        }
+        buildTypes.each {
+            it.buildConfigField("String", "PACKAGE_CHECK_SOCIAL", PACKAGE_CHECK_SOCIAL)
+        }
+        lintOptions {
+            checkReleaseBuilds false
+            abortOnError false
+        }
+
+        sourceSets {
+            SourceDirectorySet.getResource('kotlin')
+            SourceDirectorySet.getResource('src/main/kotlin')
+            SourceDirectorySet.getResource('src')
+            Resource.getResource(('src/main/res'))
+            relativeProjectPath('app/src/main/kotlin')
+        }
+
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+//            matchingFallbacks = ['buildTypes', 'compileOptions', 'lintOptions', 'release']
+        }
+
+
+    }
+
+    dependencies {
+       //local
+        implementation fileTree(include: ['*.jar'], dir: 'libs')
+        implementation fileTree(include: ['*.aar'], dir: 'libs')
+        implementation fileTree(include: ['*.jar'], dir: 'src')
+
+        //Android Compatibility
+        //noinspection GradleDependency
+          kapt "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+        //noinspection GradleCompatible
+        implementation 'androidx.appcompat:appcompat:1.1.0'
+        implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+        implementation 'com.google.android.material:material:1.6.1'
+        implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+        implementation 'androidx.multidex:multidex:2.0.1'
+
+        //android lifecycle
+        implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+        //noinspection LifecycleAnnotationProcessorWithJava8
+        kapt 'androidx.lifecycle:lifecycle-compiler:2.5.1'
+        implementation 'com.android.support:support-v4:31.0.0'
+        implementation 'com.android.support:support-annotations:31.0.0'
+
+        //Firebase
+        implementation "com.google.firebase:firebase-auth:19.0.0"
+        implementation "com.google.firebase:firebase-database:19.1.0"
+        implementation "com.google.firebase:firebase-storage:19.0.1"
+        implementation "com.google.firebase:firebase-core:17.2.0"
+        implementation 'com.google.firebase:firebase-firestore:19.0.1'
+        implementation 'com.firebase:firebase-ui:0.1.0'
+
+        // FirebaseUI for Firebase Realtime Database
+        implementation 'com.firebaseui:firebase-ui-database:8.0.1'
+
+        // FirebaseUI for Cloud Firestore
+        implementation 'com.firebaseui:firebase-ui-firestore:8.0.1'
+
+        // FirebaseUI for Firebase Auth
+        implementation 'com.firebaseui:firebase-ui-auth:8.0.1'
+
+        // FirebaseUI for Cloud Storage
+        implementation 'com.firebaseui:firebase-ui-storage:8.0.1'
+
+
+        //play-services
+        implementation "com.google.gms:google-services:4.3.13"
+        implementation "com.google.android.gms:play-services-maps:17.0.0"
+
+        //PlayButton
+        //  implementation 'com.github.romancha:MaterialPlayPauseViewButton:1.0.1'
+
+        //circle-progress-view
+        implementation 'com.github.jakob-grabner:Circle-Progress-View:v1.3'
+
+        //CircleImageView
+        implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+        //floatinbutton
+        implementation 'com.github.clans:fab:1.6.4'
+
+        //spinner
+        implementation 'com.jaredrummler:material-spinner:1.3.1'
+
+        //animation
+        implementation 'com.daimajia.androidanimations:library:2.3'
+
+        //dialog
+        implementation 'com.github.f0ris.sweetalert:library:1.6.2'
+
+        //Android-SpinKit
+        implementation 'com.github.ybq:Android-SpinKit:1.2.0'
+
+        //glide
+        //noinspection GradleCompatible
+        implementation "com.github.bumptech.glide:glide:$glide_version"
+        kapt "com.github.bumptech.glide:compiler:$glide_version"
+
+        //picasso
+        implementation 'com.squareup.picasso:picasso:2.71828'
+
+
+        //KAndroid
+        implementation 'com.github.pawegio:KAndroid:0.8.7@aar'
+
+        //Android-Ktx
+        implementation "androidx.lifecycle:lifecycle-common-java8:2.6.0-alpha01"
+        implementation 'androidx.core:core-ktx:1.8.0'
+        runtimeOnly 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
+
+        //Gson
+        implementation 'com.google.code.gson:gson:2.8.5'
+
+        //kotterknife
+        implementation 'com.jakewharton:kotterknife:0.1.0-SNAPSHOT'
+
+        //dagger2
+        def daggerVer = 2.16 // or latest version
+
+        implementation "com.google.dagger:dagger:$daggerVer"
+        implementation "com.google.dagger:dagger-android-support:$daggerVer"
+        kapt "com.google.dagger:dagger-android-processor:$daggerVer"
+        kapt "com.google.dagger:dagger-compiler:$daggerVer"
+        //dagger compatibility
+        compileOnly 'org.glassfish:javax.annotation:10.0-b28'
+        kapt 'org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.2.0'
+
+        //RxBinding - Kotlin
+        implementation 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.1.1'
+
+        //RxKotlin2 / RxAndroid
+        implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+        implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+        //root
+        implementation 'com.github.Chrisplus:RootManager:2.0.1'
+        implementation 'com.jaredrummler:android-device-names:1.1.9'
+        implementation(files("C:\\Users\\domin\\Downloads\\RootManager-2.0.1.zip"))
+
+        implementation 'com.github.Romancha:android-material-play-pause-view-button:2.3'
+        implementation 'com.github.qicodes:rxpermissions:1.3.0'
+        //noinspection GradleCompatible
+        implementation 'com.android.support:support-vector-drawable:31.0.0'
+        //implementation 'androidx.vectordrawable:vectordrawable-animated:1.0.0'
+        implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
+
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    //   buildToolsVersion '31.0.0'
+}
+
+
+apply plugin: 'com.google.gms.google-services'
