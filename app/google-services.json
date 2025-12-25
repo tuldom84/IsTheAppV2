@@ -1,9 +1,9 @@
 {
   "project_info": {
-    "project_number": "908888746071",
-    "firebase_url": "https://netservice-dc8c4-default-rtdb.firebaseio.com",
-    "project_id": "netservice-dc8c4",
-    "storage_bucket": "netservice-dc8c4.appspot.com"
+    "project_number": "xxxx",
+    "firebase_url": "https://xxxx-default-rtdb.firebaseio.com",
+    "project_id": "xxxx-dc8c4",
+    "storage_bucket": "xxxx.appspot.com"
   },
   "client": [
     {
@@ -15,20 +15,20 @@
       },
       "oauth_client": [
         {
-          "client_id": "908888746071-94qrb2aa9676hi686ar68m8h7t5r8fhs.apps.googleusercontent.com",
+          "client_id": "xxxx-94qrb2aa9676hi686ar68m8h7t5r8fhs.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC15covU4wEnDhExmCGJbfF6YzLJ7Mg_Us"
+          "current_key": "xxxx_Us"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "908888746071-94qrb2aa9676hi686ar68m8h7t5r8fhs.apps.googleusercontent.com",
+              "client_id": "xxxx-94qrb2aa9676hi686ar68m8h7t5r8fhs.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
@@ -44,20 +44,20 @@
       },
       "oauth_client": [
         {
-          "client_id": "908888746071-94qrb2aa9676hi686ar68m8h7t5r8fhs.apps.googleusercontent.com",
+          "client_id": "xxxx-94qrb2aa9676hi686ar68m8h7t5r8fhs.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC15covU4wEnDhExmCGJbfF6YzLJ7Mg_Us"
+          "current_key": "xxxx_Us"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "908888746071-94qrb2aa9676hi686ar68m8h7t5r8fhs.apps.googleusercontent.com",
+              "client_id": "xxxx-94qrb2aa9676hi686ar68m8h7t5r8fhs.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
