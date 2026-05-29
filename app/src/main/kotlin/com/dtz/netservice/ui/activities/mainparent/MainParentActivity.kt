@@ -66,7 +66,6 @@ import com.dtz.netservice.utils.HomeWatcher
 import com.google.firebase.database.DataSnapshot
 import com.pawegio.kandroid.e
 import com.pawegio.kandroid.longToast
-import kotterknife.bindView
 import java.io.File
 import javax.inject.Inject
 
@@ -77,8 +76,8 @@ import javax.inject.Inject
 
 class MainParentActivity : BaseActivity(R.layout.activity_main_parent), InterfaceViewMainParent, NavigationView.OnNavigationItemSelectedListener, HomeWatcher.OnHomePressedListener {
 
-    private val drawerLayout : DrawerLayout by bindView(R.id.drawer_layout)
-    private val navView : NavigationView by bindView(R.id.nav_view)
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navView: NavigationView
 
     private var homeWatcher: HomeWatcher?=null
 
@@ -89,6 +88,8 @@ class MainParentActivity : BaseActivity(R.layout.activity_main_parent), Interfac
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        drawerLayout = findViewById(R.id.drawer_layout)
+        navView = findViewById(R.id.nav_view)
         if (lockState && lockPin != "") { startAnimateActivity<LockActivity>() ; initializeHomeWatcher() }
         windowLightStatusBar()
         getComponent()!!.inject(this)

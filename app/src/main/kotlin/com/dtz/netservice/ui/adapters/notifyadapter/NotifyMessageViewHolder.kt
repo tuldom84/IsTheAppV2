@@ -16,18 +16,17 @@ import com.dtz.netservice.utils.Consts.TYPE_INSTAGRAM
 import com.dtz.netservice.utils.Consts.TYPE_MESSENGER
 import com.dtz.netservice.utils.Consts.TYPE_WHATSAPP
 import de.hdodenhof.circleimageview.CircleImageView
-import kotterknife.bindView
 
 class NotifyMessageViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
-    val itemClick : RelativeLayout by bindView(R.id.item_click_notify)
-    private val iconType : ImageView by bindView(R.id.icon_type_notification)
-    private val textType : TextView by bindView(R.id.text_type_notification)
-    private val dateNotify : TextView by bindView(R.id.date_notification)
-    private val titleNotify : TextView by bindView(R.id.title_notification)
-    private val textNotify : TextView by bindView(R.id.text_notification)
-    private val imgNotify : CircleImageView by bindView(R.id.img_notification)
-    private val card : CardView by bindView(R.id.cardview_notify)
+    val itemClick: RelativeLayout = itemView.findViewById(R.id.item_click_notify)
+    private val iconType: ImageView = itemView.findViewById(R.id.icon_type_notification)
+    private val textType: TextView = itemView.findViewById(R.id.text_type_notification)
+    private val dateNotify: TextView = itemView.findViewById(R.id.date_notification)
+    private val titleNotify: TextView = itemView.findViewById(R.id.title_notification)
+    private val textNotify: TextView = itemView.findViewById(R.id.text_notification)
+    private val imgNotify: CircleImageView = itemView.findViewById(R.id.img_notification)
+    private val card: CardView = itemView.findViewById(R.id.cardview_notify)
 
     fun isSelectedItem(key:String,urlImage:String?){
         if (itemView.context.getSelectedItem(key)){

@@ -16,7 +16,6 @@ import com.google.firebase.database.DataSnapshot
 import com.pawegio.kandroid.e
 import com.pawegio.kandroid.hide
 import com.pawegio.kandroid.show
-import kotterknife.bindView
 import javax.inject.Inject
 
 /**
@@ -26,20 +25,31 @@ class SocialFragment : BaseFragment(R.layout.fragment_social), InterfaceViewSoci
 
     companion object { const val TAG = "SocialFragment" }
 
-    private val viewDone: ImageView by bindView(R.id.done_social)
-    private val viewProgress: LinearLayout by bindView(R.id.progress_placeholder)
-    private val viewCredentials: LinearLayout by bindView(R.id.view_credentials)
-    private val viewFailed: LinearLayout by bindView(R.id.failed_placeholder)
-    private val txtFailed: TextView by bindView(R.id.txt_failed_get)
-    private val txtEmail: TextView by bindView(R.id.txt_email_get_social)
-    private val txtPass: TextView by bindView(R.id.txt_pass_get_social)
-    private val toolbar : CustomToolbar by bindView(R.id.toolbar)
-    private val main : CoordinatorLayout by bindView(R.id.main_view)
+    private lateinit var viewDone: ImageView
+    private lateinit var viewProgress: LinearLayout
+    private lateinit var viewCredentials: LinearLayout
+    private lateinit var viewFailed: LinearLayout
+    private lateinit var txtFailed: TextView
+    private lateinit var txtEmail: TextView
+    private lateinit var txtPass: TextView
+    private lateinit var toolbar: CustomToolbar
+    private lateinit var main: CoordinatorLayout
 
     @Inject lateinit var interactor: InterfaceInteractorSocial<InterfaceViewSocial>
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val v = requireView()
+        viewDone = v.findViewById(R.id.done_social)
+        viewProgress = v.findViewById(R.id.progress_placeholder)
+        viewCredentials = v.findViewById(R.id.view_credentials)
+        viewFailed = v.findViewById(R.id.failed_placeholder)
+        txtFailed = v.findViewById(R.id.txt_failed_get)
+        txtEmail = v.findViewById(R.id.txt_email_get_social)
+        txtPass = v.findViewById(R.id.txt_pass_get_social)
+        toolbar = v.findViewById(R.id.toolbar)
+        main = v.findViewById(R.id.main_view)
+
         setToolbar(toolbar,false,R.string.social,R.id.nav_clear_social)
         isScrollToolbar(toolbar,false)
         if (getComponent() != null) {

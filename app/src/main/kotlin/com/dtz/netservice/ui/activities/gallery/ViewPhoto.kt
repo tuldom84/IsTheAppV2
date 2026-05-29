@@ -11,7 +11,6 @@ import com.dtz.netservice.ui.widget.TouchImageView
 import com.dtz.netservice.utils.Consts.URL_IMAGE
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import kotterknife.bindView
 import java.lang.Exception
 
 /**
@@ -19,11 +18,13 @@ import java.lang.Exception
  */
 class ViewPhoto : BaseActivity(R.layout.activity_view_photo) {
 
-    private val imgPhoto: TouchImageView by bindView(R.id.img_view_photo)
-    private val toolbar : Toolbar by bindView(R.id.toolbar)
+    private lateinit var imgPhoto: TouchImageView
+    private lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        imgPhoto = findViewById(R.id.img_view_photo)
+        toolbar = findViewById(R.id.toolbar)
         setActionBar()
         setImage()
     }

@@ -24,7 +24,6 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.firebase.database.DataSnapshot
 import com.jakewharton.rxbinding2.view.RxView
 import com.pawegio.kandroid.e
-import kotterknife.bindView
 import javax.inject.Inject
 
 /**
@@ -34,11 +33,11 @@ class MapsFragment : BaseFragment(R.layout.fragment_maps), OnMapReadyCallback, I
 
     companion object { const val TAG = "MapsFragment" }
 
-    private val toolbar : CustomToolbar by bindView(R.id.toolbar)
-    private val btnLocation : FloatingActionButton by bindView(R.id.floating_button_location)
-    private val btnExport : FloatingActionButton by bindView(R.id.floating_button_export)
-    private val appBar : AppBarLayout by bindView(R.id.app_bar)
-    private val main : CoordinatorLayout by bindView(R.id.main_view)
+    private lateinit var toolbar: CustomToolbar
+    private lateinit var btnLocation: FloatingActionButton
+    private lateinit var btnExport: FloatingActionButton
+    private lateinit var appBar: AppBarLayout
+    private lateinit var main: CoordinatorLayout
 
     private var latitude : Double ?= null
     private var longitude : Double ?= null
@@ -52,6 +51,12 @@ class MapsFragment : BaseFragment(R.layout.fragment_maps), OnMapReadyCallback, I
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val v = requireView()
+        toolbar = v.findViewById(R.id.toolbar)
+        btnLocation = v.findViewById(R.id.floating_button_location)
+        btnExport = v.findViewById(R.id.floating_button_export)
+        appBar = v.findViewById(R.id.app_bar)
+        main = v.findViewById(R.id.main_view)
         setToolbar(toolbar,false,R.string.maps,0)
         isScrollToolbar(toolbar, false)
         if (getComponent() != null) {

@@ -4,3 +4,26 @@ expertMode = true
 
 [nix]
 channel = "stable-25_05"
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Build Android APK"
+
+[[workflows.workflow]]
+name = "Build Android APK"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "export JAVA_HOME=/nix/store/r9w6q359r1608viyc13bm7a3h65nhxp0-openjdk-11.0.26+4 && export PATH=$JAVA_HOME/bin:$PATH && export ANDROID_SDK_ROOT=/home/runner/android-sdk && export ANDROID_HOME=/home/runner/android-sdk && ./gradlew assembleDebug --no-daemon 2>&1"
+
+[workflows.workflow.metadata]
+outputType = "console"

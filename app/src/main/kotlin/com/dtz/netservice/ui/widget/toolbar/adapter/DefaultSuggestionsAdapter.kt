@@ -9,7 +9,6 @@ import android.widget.TextView
 import com.dtz.netservice.R
 import com.jakewharton.rxbinding2.view.RxView
 import com.pawegio.kandroid.inflateLayout
-import kotterknife.bindView
 
 /**
  * Created by luis rafael on 20/05/19.
@@ -42,8 +41,8 @@ class DefaultSuggestionsAdapter : SuggestionsAdapter<String, DefaultSuggestionsA
     }
 
     class SuggestionHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
-        private val text: TextView by bindView(R.id.text)
-        val ivDelete: ImageView by bindView(R.id.iv_delete)
+        private val text: TextView = itemView.findViewById(R.id.text)
+        val ivDelete: ImageView = itemView.findViewById(R.id.iv_delete)
 
         fun bind(text:String){
             this.text.text = text

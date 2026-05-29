@@ -18,7 +18,6 @@ import com.dtz.netservice.utils.ConstFun.find
 import com.dtz.netservice.utils.ConstFun.isShow
 import com.google.android.material.appbar.AppBarLayout
 import com.pawegio.kandroid.inflateLayout
-import kotterknife.bindView
 
 /**
  * Created by luis rafael on 20/03/18.
@@ -36,19 +35,30 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting){
     private fun getTimeFinishApp() : Int = requireContext()!!.timeFinishApp
     private fun setTimeFinishApp(time:Int) {requireContext()!!.timeFinishApp = time}
 
-    private val enableCodeAccess : LinearLayout by bindView(R.id.btn_enable_code_access)
-    private val checkEnableCodeAccess : CustomCheckBox by bindView(R.id.check_enable_code_access)
-    private val changeCodeAccess : LinearLayout by bindView(R.id.btn_change_code_access)
-    private val enableAppFinish : LinearLayout by bindView(R.id.btn_enable_app_finih)
-    private val checkEnableAppFinish : CustomCheckBox by bindView(R.id.check_enable_app_finish)
-    private val changeTimeAppFinish : LinearLayout by bindView(R.id.btn_change_time_app_finish)
-    private val txtTimeAppFinish: TextView by bindView(R.id.txt_time_finish_app)
-    private val toolbar : CustomToolbar by bindView(R.id.toolbar)
-    private val appBar : AppBarLayout by bindView(R.id.app_bar)
-    private val nested : CustomNestedScrollView by bindView(R.id.nested_scroll)
+    private lateinit var enableCodeAccess : LinearLayout
+    private lateinit var checkEnableCodeAccess : CustomCheckBox
+    private lateinit var changeCodeAccess : LinearLayout
+    private lateinit var enableAppFinish : LinearLayout
+    private lateinit var checkEnableAppFinish : CustomCheckBox
+    private lateinit var changeTimeAppFinish : LinearLayout
+    private lateinit var txtTimeAppFinish: TextView
+    private lateinit var toolbar : CustomToolbar
+    private lateinit var appBar : AppBarLayout
+    private lateinit var nested : CustomNestedScrollView
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val v = requireView()
+        enableCodeAccess = v.findViewById(R.id.btn_enable_code_access)
+        checkEnableCodeAccess = v.findViewById(R.id.check_enable_code_access)
+        changeCodeAccess = v.findViewById(R.id.btn_change_code_access)
+        enableAppFinish = v.findViewById(R.id.btn_enable_app_finih)
+        checkEnableAppFinish = v.findViewById(R.id.check_enable_app_finish)
+        changeTimeAppFinish = v.findViewById(R.id.btn_change_time_app_finish)
+        txtTimeAppFinish = v.findViewById(R.id.txt_time_finish_app)
+        toolbar = v.findViewById(R.id.toolbar)
+        appBar = v.findViewById(R.id.app_bar)
+        nested = v.findViewById(R.id.nested_scroll)
         init()
     }
 

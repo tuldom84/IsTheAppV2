@@ -23,7 +23,6 @@ import com.pawegio.kandroid.hide
 import com.pawegio.kandroid.longToast
 import com.pawegio.kandroid.show
 import de.hdodenhof.circleimageview.CircleImageView
-import kotterknife.bindView
 import org.romancha.playpause.PlayPauseView
 import java.io.File
 import java.io.FileNotFoundException
@@ -34,23 +33,23 @@ import java.io.FileNotFoundException
  */
 class CallsViewHolder(view: View, val context: Context) : RecyclerView.ViewHolder(view) {
 
-    private val contact: TextView by bindView(R.id.contact_item_calls)
-    private val phoneNumber: TextView by bindView(R.id.phone_number_item_calls)
-    private val dateTime: TextView by bindView(R.id.date_item_calls)
-    val imageItem: ImageView by bindView(R.id.img_item_calls)
-    val progressCall: CircleProgressView by bindView(R.id.progress_item_calls)
-    val itemClick: LinearLayout by bindView(R.id.item_click_calls)
-    private val duration: TextView by bindView(R.id.duration_item_calls)
-    private val currentDuration: TextView by bindView(R.id.current_duration_item_calls)
-    private val imgCallType : ImageView by bindView(R.id.img_type_call)
-    val btnPlay: PlayPauseView by bindView(R.id.play_button_calls)
-    private val seekBarProgress : SeekBar by bindView(R.id.progress_seekbar_calls)
-    private val imgCheck : CircleImageView by bindView(R.id.img_selected_calls)
-    private val card : androidx.cardview.widget.CardView by bindView(R.id.cardview_calls)
+    private val contact: TextView = itemView.findViewById(R.id.contact_item_calls)
+    private val phoneNumber: TextView = itemView.findViewById(R.id.phone_number_item_calls)
+    private val dateTime: TextView = itemView.findViewById(R.id.date_item_calls)
+    val imageItem: ImageView = itemView.findViewById(R.id.img_item_calls)
+    val progressCall: CircleProgressView = itemView.findViewById(R.id.progress_item_calls)
+    val itemClick: LinearLayout = itemView.findViewById(R.id.item_click_calls)
+    private val duration: TextView = itemView.findViewById(R.id.duration_item_calls)
+    private val currentDuration: TextView = itemView.findViewById(R.id.current_duration_item_calls)
+    private val imgCallType: ImageView = itemView.findViewById(R.id.img_type_call)
+    val btnPlay: PlayPauseView = itemView.findViewById(R.id.play_button_calls)
+    private val seekBarProgress: SeekBar = itemView.findViewById(R.id.progress_seekbar_calls)
+    private val imgCheck: CircleImageView = itemView.findViewById(R.id.img_selected_calls)
+    private val card: androidx.cardview.widget.CardView = itemView.findViewById(R.id.cardview_calls)
 
     private val audio = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
 
-    internal var downloader : Boolean = false
+    internal var downloader: Boolean = false
     private var mediaPlayer: MediaPlayer? = null
     private var currentProgress = false
     private var runThreads: Thread? = null

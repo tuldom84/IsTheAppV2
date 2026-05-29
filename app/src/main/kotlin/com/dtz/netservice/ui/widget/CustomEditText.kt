@@ -13,15 +13,14 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
 import com.dtz.netservice.R
 import com.pawegio.kandroid.show
-import kotterknife.bindView
 
 /**
  * Created by luis rafael on 23/04/19.
  */
 class CustomEditText : FrameLayout, TextWatcher {
 
-    private val editText : AppCompatEditText by bindView(R.id.id_edit_text)
-    private val textView : TextView by bindView(R.id.id_text)
+    private lateinit var editText: AppCompatEditText
+    private lateinit var textView: TextView
 
     private val passwordNumber = 1
     private val number = 2
@@ -59,6 +58,9 @@ class CustomEditText : FrameLayout, TextWatcher {
     private fun init(attrs: AttributeSet){
 
         inflate(context,R.layout.edittext,this)
+
+        editText = findViewById(R.id.id_edit_text)
+        textView = findViewById(R.id.id_text)
 
         val typeArray = context.obtainStyledAttributes(attrs,R.styleable.CustomEditText)
 

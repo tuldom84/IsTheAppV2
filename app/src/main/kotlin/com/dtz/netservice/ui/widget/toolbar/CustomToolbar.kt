@@ -30,7 +30,6 @@ import com.pawegio.kandroid.hide
 import com.pawegio.kandroid.runDelayedOnUiThread
 import com.pawegio.kandroid.show
 import de.hdodenhof.circleimageview.CircleImageView
-import kotterknife.bindView
 import kotlin.math.ceil
 
 /**
@@ -38,21 +37,21 @@ import kotlin.math.ceil
  */
 class CustomToolbar : FrameLayout, View.OnClickListener, Animation.AnimationListener, SuggestionsAdapter.OnItemViewClickListener, View.OnFocusChangeListener, TextView.OnEditorActionListener, TextWatcher {
 
-    private val inputContainer: LinearLayout by bindView(R.id.inputContainer)
-    private val navIcon: ImageView  by bindView(R.id.tb_nav)
-    private val menuIcon: ImageView  by bindView(R.id.tb_menu)
-    private val clearIcon: ImageView  by bindView(R.id.tb_clear)
-    private val childPhoto: CircleImageView  by bindView(R.id.tb_child_photo)
-    private val searchEditText: EditText  by bindView(R.id.tb_editText)
-    private val placeHolderView: TextView  by bindView(R.id.tb_placeholder)
-    private val stateView : ImageView by bindView(R.id.tb_state)
-    private val progress : ProgressBar by bindView(R.id.tb_progress)
-    private val actionDelete : ImageView by bindView(R.id.tb_action_delete)
-    private val last : RelativeLayout by bindView(R.id.last)
-    private val recyclerView : RecyclerView by bindView(R.id.tb_recycler)
-    private val linearRecord : LinearLayout by bindView(R.id.tb_record)
-    private val viewRecord : ImageView by bindView(R.id.tb_view_record)
-    private val timerRecord : TextView by bindView(R.id.tb_timer_record)
+    private lateinit var inputContainer: LinearLayout
+    private lateinit var navIcon: ImageView
+    private lateinit var menuIcon: ImageView
+    private lateinit var clearIcon: ImageView
+    private lateinit var childPhoto: CircleImageView
+    private lateinit var searchEditText: EditText
+    private lateinit var placeHolderView: TextView
+    private lateinit var stateView: ImageView
+    private lateinit var progress: ProgressBar
+    private lateinit var actionDelete: ImageView
+    private lateinit var last: RelativeLayout
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var linearRecord: LinearLayout
+    private lateinit var viewRecord: ImageView
+    private lateinit var timerRecord: TextView
 
     private var onToolbarActionListener: OnToolbarActionListener? = null
     private var alphaRecord : AlphaAnimation?=null
@@ -116,10 +115,6 @@ class CustomToolbar : FrameLayout, View.OnClickListener, Animation.AnimationList
             timerRecord.text = timer
         }
 
-    /*private var lastSuggestions: MutableList<String>?
-        get() = adapter!!.getSuggestions()
-        set(suggestions) = adapter!!.setSuggestions(suggestions!!)*/
-
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         init()
     }
@@ -131,6 +126,22 @@ class CustomToolbar : FrameLayout, View.OnClickListener, Animation.AnimationList
     private fun init() {
 
         View.inflate(context, R.layout.toolbar, this)
+
+        inputContainer = findViewById(R.id.inputContainer)
+        navIcon = findViewById(R.id.tb_nav)
+        menuIcon = findViewById(R.id.tb_menu)
+        clearIcon = findViewById(R.id.tb_clear)
+        childPhoto = findViewById(R.id.tb_child_photo)
+        searchEditText = findViewById(R.id.tb_editText)
+        placeHolderView = findViewById(R.id.tb_placeholder)
+        stateView = findViewById(R.id.tb_state)
+        progress = findViewById(R.id.tb_progress)
+        actionDelete = findViewById(R.id.tb_action_delete)
+        last = findViewById(R.id.last)
+        recyclerView = findViewById(R.id.tb_recycler)
+        linearRecord = findViewById(R.id.tb_record)
+        viewRecord = findViewById(R.id.tb_view_record)
+        timerRecord = findViewById(R.id.tb_timer_record)
 
         density = resources.displayMetrics.density
 

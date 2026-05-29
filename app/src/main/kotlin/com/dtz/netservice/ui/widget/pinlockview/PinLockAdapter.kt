@@ -12,7 +12,6 @@ import com.dtz.netservice.utils.ConstFun.setVibrate
 import com.pawegio.kandroid.hide
 import com.pawegio.kandroid.inflateLayout
 import com.pawegio.kandroid.show
-import kotterknife.bindView
 
 /**
  * Created by luis rafael on 01/05/19.
@@ -128,7 +127,7 @@ class PinLockAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     inner class DoneViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val mButtonImage : ImageView by bindView(R.id.buttonImage)
+        val mButtonImage: ImageView = itemView.findViewById(R.id.buttonImage)
         init {
             if (pinLength > 0){
                 mButtonImage.setOnClickListener {
@@ -140,7 +139,7 @@ class PinLockAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     inner class NumberViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-         val mNumberButton: Button by bindView(R.id.button)
+        val mNumberButton: Button = itemView.findViewById(R.id.button)
         init {
             mNumberButton.setOnClickListener { v ->
                 itemView.context.setVibrate(50)
@@ -150,7 +149,7 @@ class PinLockAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     inner class DeleteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val mButtonImage: ImageView by bindView(R.id.buttonImage)
+        val mButtonImage: ImageView = itemView.findViewById(R.id.buttonImage)
 
         init {
             if (pinLength > 0) {

@@ -16,7 +16,6 @@ import com.dtz.netservice.ui.activities.mainchild.MainChildActivity
 import com.dtz.netservice.utils.ConstFun.startAnimateActivity
 import com.dtz.netservice.utils.Consts.TEXT
 import com.dtz.netservice.utils.KeyboardUtils
-import kotterknife.bindView
 import javax.inject.Inject
 
 /**
@@ -24,19 +23,26 @@ import javax.inject.Inject
  */
 class RegisterActivity : BaseActivity(R.layout.activity_register), InterfaceViewRegister, KeyboardUtils.SoftKeyboardToggleListener {
 
-    private val edtNewChild: EditText by bindView(R.id.edit_new_child_register)
-    private val edtEmail: EditText by bindView(R.id.edit_register_email)
-    private val edtPass: EditText by bindView(R.id.edit_register_password)
-    private val edtPassRepeat: EditText by bindView(R.id.edit_register_repeat_password)
-    private val btnSignUp: Button by bindView(R.id.btn_register_sign_up)
-    private val btnHaveAccount : Button by bindView(R.id.btn_register_have_account)
-    private val scroll : ScrollView by bindView(R.id.scroll)
+    private lateinit var edtNewChild: EditText
+    private lateinit var edtEmail: EditText
+    private lateinit var edtPass: EditText
+    private lateinit var edtPassRepeat: EditText
+    private lateinit var btnSignUp: Button
+    private lateinit var btnHaveAccount: Button
+    private lateinit var scroll: ScrollView
 
     @Inject
     lateinit var interactor: InterfaceInteractorRegister<InterfaceViewRegister>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        edtNewChild = findViewById(R.id.edit_new_child_register)
+        edtEmail = findViewById(R.id.edit_register_email)
+        edtPass = findViewById(R.id.edit_register_password)
+        edtPassRepeat = findViewById(R.id.edit_register_repeat_password)
+        btnSignUp = findViewById(R.id.btn_register_sign_up)
+        btnHaveAccount = findViewById(R.id.btn_register_have_account)
+        scroll = findViewById(R.id.scroll)
         getComponent()!!.inject(this)
         interactor.onAttach(this)
         newChildValidationObservable(edtNewChild)

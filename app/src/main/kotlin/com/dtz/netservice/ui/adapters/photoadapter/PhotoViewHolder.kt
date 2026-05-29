@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import com.dtz.netservice.R
 import com.dtz.netservice.data.model.Photo
-import kotterknife.bindView
 
 import com.dtz.netservice.utils.ConstFun.setImageUrl
 import androidx.core.content.ContextCompat
@@ -20,11 +19,11 @@ import de.hdodenhof.circleimageview.CircleImageView
  */
 class PhotoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-    private val dateTime: TextView by bindView(R.id.date_item_photo)
-    val imgPhoto: ImageView by bindView(R.id.img_item_photo)
-    val itemClick: CardView by bindView(R.id.item_click_photo)
-    private val imgCheck : CircleImageView by bindView(R.id.img_selected_photo)
-    private val name : TextView by bindView(R.id.name_item_photo)
+    private val dateTime: TextView = itemView.findViewById(R.id.date_item_photo)
+    val imgPhoto: ImageView = itemView.findViewById(R.id.img_item_photo)
+    val itemClick: CardView = itemView.findViewById(R.id.item_click_photo)
+    private val imgCheck: CircleImageView = itemView.findViewById(R.id.img_selected_photo)
+    private val name: TextView = itemView.findViewById(R.id.name_item_photo)
 
     fun isSelected(key:String){
         if (itemView.context.getSelectedItem(key)){

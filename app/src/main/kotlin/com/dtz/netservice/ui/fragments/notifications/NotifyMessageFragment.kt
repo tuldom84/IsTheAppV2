@@ -23,7 +23,6 @@ import com.dtz.netservice.utils.ConstFun.contentGlobalLayout
 import com.dtz.netservice.utils.ConstFun.isScrollToolbar
 import com.google.firebase.database.DataSnapshot
 import com.pawegio.kandroid.*
-import kotterknife.bindView
 import javax.inject.Inject
 
 /**
@@ -35,17 +34,17 @@ class NotifyMessageFragment : BaseFragment(R.layout.fragment_notifications) , In
 
     private var dataList : MutableList<DataDelete> = mutableListOf()
 
-    private val viewProgress : LinearLayout by bindView(R.id.progress_placeholder)
-    private val viewNotHave : LinearLayout by bindView(R.id.not_have_placeholder)
-    private val viewFailed : LinearLayout by bindView(R.id.failed_placeholder)
-    private val txtNotHave : TextView by bindView(R.id.txt_not_have_get)
-    private val txtFailed  : TextView by bindView(R.id.txt_failed_get)
-    private val list : CustomRecyclerView by bindView(R.id.list)
-    private val floatingButton : FloatingActionButton by bindView(R.id.floating_button)
-    private val content : ConstraintLayout by bindView(R.id.content)
-    private val appBar : AppBarLayout by bindView(R.id.app_bar)
-    private val toolbar : CustomToolbar by bindView(R.id.toolbar)
-    private val main : CoordinatorLayout by bindView(R.id.main_view)
+    private lateinit var viewProgress: LinearLayout
+    private lateinit var viewNotHave: LinearLayout
+    private lateinit var viewFailed: LinearLayout
+    private lateinit var txtNotHave: TextView
+    private lateinit var txtFailed: TextView
+    private lateinit var list: CustomRecyclerView
+    private lateinit var floatingButton: FloatingActionButton
+    private lateinit var content: ConstraintLayout
+    private lateinit var appBar: AppBarLayout
+    private lateinit var toolbar: CustomToolbar
+    private lateinit var main: CoordinatorLayout
 
     private var recyclerAdapter : NotifyMessageRecyclerAdapter?=null
 
@@ -55,6 +54,18 @@ class NotifyMessageFragment : BaseFragment(R.layout.fragment_notifications) , In
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val v = requireView()
+        viewProgress = v.findViewById(R.id.progress_placeholder)
+        viewNotHave = v.findViewById(R.id.not_have_placeholder)
+        viewFailed = v.findViewById(R.id.failed_placeholder)
+        txtNotHave = v.findViewById(R.id.txt_not_have_get)
+        txtFailed = v.findViewById(R.id.txt_failed_get)
+        list = v.findViewById(R.id.list)
+        floatingButton = v.findViewById(R.id.floating_button)
+        content = v.findViewById(R.id.content)
+        appBar = v.findViewById(R.id.app_bar)
+        toolbar = v.findViewById(R.id.toolbar)
+        main = v.findViewById(R.id.main_view)
         setToolbar(toolbar,true,R.string.search_notify,R.id.nav_clear_notifications)
         contentGlobalLayout(content, appBar)
         list.setAppBar(appBar)

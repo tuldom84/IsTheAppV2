@@ -23,7 +23,6 @@ import com.pawegio.kandroid.hide
 import com.pawegio.kandroid.longToast
 import com.pawegio.kandroid.show
 import de.hdodenhof.circleimageview.CircleImageView
-import kotterknife.bindView
 import org.romancha.playpause.PlayPauseView
 import java.io.File
 import java.io.FileNotFoundException
@@ -33,17 +32,17 @@ import java.io.FileNotFoundException
  */
 class RecordingViewHolder(view: View, private val context: Context) : RecyclerView.ViewHolder(view) {
 
-    private val name: TextView by bindView(R.id.name_item_record)
-    private val dateTime: TextView by bindView(R.id.date_item_record)
-    private val imageItem: ImageView by bindView(R.id.img_item_record)
-    val progressRecord: CircleProgressView by bindView(R.id.progress_item_record)
-    val itemClick: LinearLayout by bindView(R.id.item_click_record)
-    private val duration: TextView by bindView(R.id.duration_item_record)
-    private val currentDuration: TextView by bindView(R.id.current_duration_item_record)
-    private val seekBarProgress: SeekBar by bindView(R.id.progress_seekbar_record)
-    val btnPlay: PlayPauseView by bindView(R.id.play_button_record)
-    private val imgCheck : CircleImageView by bindView(R.id.img_selected_record)
-    private val card : CardView by bindView(R.id.cardview_record)
+    private val name: TextView = itemView.findViewById(R.id.name_item_record)
+    private val dateTime: TextView = itemView.findViewById(R.id.date_item_record)
+    private val imageItem: ImageView = itemView.findViewById(R.id.img_item_record)
+    val progressRecord: CircleProgressView = itemView.findViewById(R.id.progress_item_record)
+    val itemClick: LinearLayout = itemView.findViewById(R.id.item_click_record)
+    private val duration: TextView = itemView.findViewById(R.id.duration_item_record)
+    private val currentDuration: TextView = itemView.findViewById(R.id.current_duration_item_record)
+    private val seekBarProgress: SeekBar = itemView.findViewById(R.id.progress_seekbar_record)
+    val btnPlay: PlayPauseView = itemView.findViewById(R.id.play_button_record)
+    private val imgCheck: CircleImageView = itemView.findViewById(R.id.img_selected_record)
+    private val card: CardView = itemView.findViewById(R.id.cardview_record)
 
     private val audio = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
 

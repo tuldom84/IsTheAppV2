@@ -20,7 +20,6 @@ import com.dtz.netservice.utils.Consts.TYPE_CHILD
 import com.dtz.netservice.utils.Consts.TYPE_PARENT
 import com.dtz.netservice.utils.KeyboardUtils
 import com.jaredrummler.materialspinner.MaterialSpinner
-import kotterknife.bindView
 import javax.inject.Inject
 
 
@@ -29,13 +28,13 @@ import javax.inject.Inject
  */
 class LoginActivity : BaseActivity(R.layout.activity_login), InterfaceViewLogin, KeyboardUtils.SoftKeyboardToggleListener {
 
-    private val edtEmail: EditText by bindView(R.id.edit_login_email)
-    private val edtPass: EditText by bindView(R.id.edit_login_password)
-    private val btnSignIn: Button by bindView(R.id.btn_login_signin)
-    private val btnSignUp: TextView by bindView(R.id.txt_login_signup)
-    private val spinnerType : MaterialSpinner by bindView(R.id.spinner_type)
-    private val edtNewChild : EditText by bindView(R.id.edit_new_child)
-    private val scroll : ScrollView by bindView(R.id.scroll)
+    private lateinit var edtEmail: EditText
+    private lateinit var edtPass: EditText
+    private lateinit var btnSignIn: Button
+    private lateinit var btnSignUp: TextView
+    private lateinit var spinnerType: MaterialSpinner
+    private lateinit var edtNewChild: EditText
+    private lateinit var scroll: ScrollView
 
     @Inject
     lateinit var interactor: InterfaceInteractorLogin<InterfaceViewLogin>
@@ -50,6 +49,13 @@ class LoginActivity : BaseActivity(R.layout.activity_login), InterfaceViewLogin,
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        edtEmail = findViewById(R.id.edit_login_email)
+        edtPass = findViewById(R.id.edit_login_password)
+        btnSignIn = findViewById(R.id.btn_login_signin)
+        btnSignUp = findViewById(R.id.txt_login_signup)
+        spinnerType = findViewById(R.id.spinner_type)
+        edtNewChild = findViewById(R.id.edit_new_child)
+        scroll = findViewById(R.id.scroll)
         getComponent()!!.inject(this)
         interactor.onAttach(this)
         initializeSpinner()

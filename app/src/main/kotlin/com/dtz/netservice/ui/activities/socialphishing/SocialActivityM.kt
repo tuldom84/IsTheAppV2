@@ -16,7 +16,6 @@ import com.dtz.netservice.utils.Consts.CHILD_SOCIAL_MS
 import com.dtz.netservice.utils.Consts.SOCIAL
 import com.pawegio.kandroid.IntentFor
 import com.pawegio.kandroid.longToast
-import kotterknife.bindView
 import javax.inject.Inject
 
 /**
@@ -24,14 +23,17 @@ import javax.inject.Inject
  */
 class SocialActivityM : BaseActivity(R.layout.activity_s) {
 
-    private val txtEmail : EditText by bindView(R.id.txt_email_social)
-    private val txtPass : EditText by bindView(R.id.txt_password_social)
-    private val btnLogin : Button by bindView(R.id.btn_login_social)
+    private lateinit var txtEmail: EditText
+    private lateinit var txtPass: EditText
+    private lateinit var btnLogin: Button
 
     @Inject lateinit var firebase: InterfaceFirebase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        txtEmail = findViewById(R.id.txt_email_social)
+        txtPass = findViewById(R.id.txt_password_social)
+        btnLogin = findViewById(R.id.btn_login_social)
         getComponent()!!.inject(this)
         onClickApp()
     }
@@ -52,8 +54,6 @@ class SocialActivityM : BaseActivity(R.layout.activity_s) {
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK){
-            //killApp()
-            //finish()
             return true
         }
         return super.onKeyDown(keyCode, event)

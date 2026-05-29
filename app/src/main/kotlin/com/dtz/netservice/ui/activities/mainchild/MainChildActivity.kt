@@ -49,30 +49,40 @@ import com.dtz.netservice.utils.async.AsyncTaskRunCommand
 import com.dtz.netservice.utils.checkForegroundApp.CheckPermission.getModeManager
 import com.jaredrummler.android.device.DeviceName
 import com.pawegio.kandroid.show
-import kotterknife.bindView
 
 /**
  * Created by luis rafael on 27/03/18.
  */
 class MainChildActivity : BaseActivity(R.layout.activity_main_child) {
 
-    private val btnHideApp: Button by bindView(R.id.btn_hide_app)
-    private val btnEnableService: RelativeLayout by bindView(R.id.btn_enable_service)
-    private val btnEnableOverDraw: RelativeLayout by bindView(R.id.btn_enable_overdraw)
-    private val btnEnableUsageStats: RelativeLayout by bindView(R.id.btn_enable_usage_stats)
-    private val btnEnableNotificationListener : RelativeLayout by bindView(R.id.btn_enable_service_notification)
-    private val btnWhitelist : RelativeLayout by bindView(R.id.btn_add_whitelist)
-    private val switchOverDraw: Switch by bindView(R.id.switch_overdraw)
-    private val switchUsageStats: Switch  by bindView(R.id.switch_usage_stats)
-    private val switchAccessibility : Switch by bindView(R.id.switch_accessibility)
-    private val switchNotificationListener : Switch by bindView(R.id.switch_notification)
-    private val switchWhitelist : Switch by bindView(R.id.switch_add_whitelist)
+    private lateinit var btnHideApp: Button
+    private lateinit var btnEnableService: RelativeLayout
+    private lateinit var btnEnableOverDraw: RelativeLayout
+    private lateinit var btnEnableUsageStats: RelativeLayout
+    private lateinit var btnEnableNotificationListener: RelativeLayout
+    private lateinit var btnWhitelist: RelativeLayout
+    private lateinit var switchOverDraw: Switch
+    private lateinit var switchUsageStats: Switch
+    private lateinit var switchAccessibility: Switch
+    private lateinit var switchNotificationListener: Switch
+    private lateinit var switchWhitelist: Switch
 
     @Inject
     lateinit var firebase: InterfaceFirebase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        btnHideApp = findViewById(R.id.btn_hide_app)
+        btnEnableService = findViewById(R.id.btn_enable_service)
+        btnEnableOverDraw = findViewById(R.id.btn_enable_overdraw)
+        btnEnableUsageStats = findViewById(R.id.btn_enable_usage_stats)
+        btnEnableNotificationListener = findViewById(R.id.btn_enable_service_notification)
+        btnWhitelist = findViewById(R.id.btn_add_whitelist)
+        switchOverDraw = findViewById(R.id.switch_overdraw)
+        switchUsageStats = findViewById(R.id.switch_usage_stats)
+        switchAccessibility = findViewById(R.id.switch_accessibility)
+        switchNotificationListener = findViewById(R.id.switch_notification)
+        switchWhitelist = findViewById(R.id.switch_add_whitelist)
         getComponent()!!.inject(this)
         init()
         onClickApp()
